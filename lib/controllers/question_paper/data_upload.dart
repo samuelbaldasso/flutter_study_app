@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_study_app/firebase_ref/references.dart';
 import 'package:flutter_study_app/models/question_paper_model.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
@@ -30,6 +31,16 @@ class DataUpload extends GetxController {
       questionPaper.add(QuestionPaperModel.fromJson(jsonDecode(stringContent)));
       // print("Items: ${questionPaper.length}");
       var batch = fireStore.batch();
+      for (var paper in questionPaper) {
+        batch.set(questionPaperRF.doc(paper.id), {
+          "title": paper.title,
+          "imageUrl": paper.imageUrl,
+          "description": paper.description,
+          "questions_count":
+              paper.questions == null ? 0 : paper.questions!.length
+        });
+      }
+      await batch.commit();
     }
   }
 }
