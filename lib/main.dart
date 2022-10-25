@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study_app/bindings/initial_bindings.dart';
+import 'package:flutter_study_app/config/themes/app_light_theme.dart';
 import 'package:flutter_study_app/data_upload_screen.dart';
 import 'package:flutter_study_app/screens/introduction/introduction.dart';
 import 'package:flutter_study_app/screens/splash/splash_screen.dart';
@@ -19,7 +20,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(getPages: AppRoutes.routes());
+    return GetMaterialApp(
+      theme: LightTheme().buildLightTheme(),
+      getPages: AppRoutes.routes());
   }
 }
 
