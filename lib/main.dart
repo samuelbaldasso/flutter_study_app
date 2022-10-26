@@ -10,9 +10,10 @@ import 'firebase_options.dart';
 import 'package:get/get.dart';
 import 'routes/app_routes.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   InitialBindings().dependencies();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -26,7 +27,6 @@ class MyApp extends StatelessWidget {
       getPages: AppRoutes.routes());
   }
 }
-
 
 // Future<void> main() async {
 //   WidgetsFlutterBinding.ensureInitialized();

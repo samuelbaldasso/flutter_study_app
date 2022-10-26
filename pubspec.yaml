@@ -51,6 +51,8 @@ dev_dependencies:
   get: ^4.6.5
   cloud_firestore: ^4.0.2
   google_fonts: ^3.0.1
+  firebase_storage: ^11.0.2
+  cached_network_image: ^3.2.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
