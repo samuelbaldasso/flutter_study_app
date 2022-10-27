@@ -21,31 +21,34 @@ class QuestionPaperModel {
   QuestionPaperModel.fromJson(Map<String, dynamic> json)
       : id = json['id'] as String,
         title = json['title'] as String,
-        imageUrl = json['image_url'] as String,
-        description = json['description'] as String,
+        imageUrl = json['imageUrl']??"",
+        description = json['Description'] as String,
         timeSeconds = json['time_seconds'] as int,
         questionCount = 0,
         questions = (json["questions"] as List)
             .map((e) => Questions.fromJson(e as Map<String, dynamic>))
             .toList();
 
-  QuestionPaperModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> json)
-      : id = json.id,
-        title = json['title'],
-        imageUrl = json['image_url'],
-        description = json['description'],
-        timeSeconds = json['time_seconds'],
-        questionCount = json["questions_count"] as int,
+  QuestionPaperModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> snapshot)
+      : id = snapshot.id,
+        title = snapshot['title'] ?? "",
+        imageUrl = snapshot['imageUrl'],
+        description = snapshot['Description'],
+        timeSeconds = snapshot['time_seconds'],
+        questionCount = snapshot["question_count"] as int,
         questions = [];
+
+  String timeInMinutes() => "${(timeSeconds/60).ceil()} minutes";
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = id;
     data['title'] = title;
-    data['image_url'] = imageUrl;
+    data['imageUrl'] = imageUrl;
     data['description'] = description;
     data['time_seconds'] = timeSeconds;
-    data['questions_count'] = questionCount;
+    data['question_count'] = questionCount;
     data['questions'] = questions!.map((v) => v.toJson()).toList();
     return data;
   }
@@ -66,7 +69,8 @@ class Questions {
   Questions.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         question = json['question'],
-        answers = (json['answers'] as List).map((e) => Answers.fromJson(e)).toList(),
+        answers =
+            (json['answers'] as List).map((e) => Answers.fromJson(e)).toList(),
         correctAnswer = json['correct_answer'];
 
   Map<String, dynamic> toJson() {

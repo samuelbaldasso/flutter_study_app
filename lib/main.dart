@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study_app/bindings/initial_bindings.dart';
 import 'package:flutter_study_app/config/themes/app_light_theme.dart';
+import 'package:flutter_study_app/controllers/question_paper/data_upload.dart';
 import 'package:flutter_study_app/controllers/theme_controller.dart';
 import 'package:flutter_study_app/data_upload_screen.dart';
 import 'package:flutter_study_app/screens/introduction/introduction.dart';
@@ -10,11 +11,12 @@ import 'firebase_options.dart';
 import 'package:get/get.dart';
 import 'routes/app_routes.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   InitialBindings().dependencies();
-  await Firebase.initializeApp();
-  runApp(MyApp());
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(const MyApp());
+  DataUpload().dataUpload();
 }
 
 class MyApp extends StatelessWidget {
@@ -23,8 +25,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: Get.find<ThemeController>().lightTheme,
-      getPages: AppRoutes.routes());
+        theme: Get.find<ThemeController>().lightTheme,
+        getPages: AppRoutes.routes());
   }
 }
 
