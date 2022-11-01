@@ -18,11 +18,12 @@ import 'package:flutter_study_app/controllers/question_paper/question_paper_cont
 class HomeScreen extends GetView<MyZoomDrawerController> {
   const HomeScreen({Key? key}) : super(key: key);
 
+  static const String routeName = "/home";
+
   @override
   Widget build(BuildContext context) {
     QuestionPaperController _questionPaperController = Get.find();
-    return Scaffold(
-      body: GetBuilder<MyZoomDrawerController>(builder: (_) {
+    return Scaffold(body: GetBuilder<MyZoomDrawerController>(builder: (_) {
       return ZoomDrawer(
         menuScreenWidth: double.maxFinite,
         borderRadius: 50.0,
@@ -30,7 +31,7 @@ class HomeScreen extends GetView<MyZoomDrawerController> {
         showShadow: false,
         moveMenuScreen: false,
         angle: 0.0,
-        slideWidth: MediaQuery.of(context).size.width*0.7,
+        slideWidth: MediaQuery.of(context).size.width * 0.7,
         menuScreen: const MyMenuScreen(),
         mainScreen: Container(
           decoration: BoxDecoration(gradient: mainGradient()),
