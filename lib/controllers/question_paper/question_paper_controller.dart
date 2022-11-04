@@ -1,6 +1,7 @@
 import 'package:flutter_study_app/controllers/auth_controller.dart';
 import 'package:flutter_study_app/firebase_ref/references.dart';
 import 'package:flutter_study_app/models/question_paper_model.dart';
+import 'package:flutter_study_app/screens/questions/question_screen.dart';
 import 'package:flutter_study_app/services/firebase_storage_service.dart';
 import 'package:flutter_study_app/utils/app_logger.dart';
 import 'package:get/get.dart';
@@ -41,7 +42,9 @@ class QuestionPaperController extends GetxController {
     if (_auth.isLoggedIn()) {
       if (tryAgain) {
         Get.back();
-      } else {}
+      } else {
+        Get.toNamed(QuestionScreen.routeName, arguments: paper);
+      }
     } else {
       _auth.showLoginDialog();
     }

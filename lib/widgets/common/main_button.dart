@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_study_app/config/themes/app_colors.dart';
+import 'package:get/get.dart';
 
 class MainButton extends StatelessWidget {
   const MainButton(
@@ -39,7 +40,8 @@ class MainButton extends StatelessWidget {
                       title,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: onSurfaceTextColor),
+                          color: Get.isDarkMode?onSurfaceTextColor:Theme.of(context).primaryColor
+                      ),
                     )),
               ),
             ),

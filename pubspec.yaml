@@ -39,6 +39,8 @@ dependencies:
   url_launcher: ^6.1.6
   google_sign_in: ^5.4.0
   logger: ^1.0.0
+  shimmer: ^2.0.0
+  easy_separator: ^1.0.1
   firebase_core: ^2.1.1
   firebase_auth: ^4.1.0
   flutter_svg: ^1.1.6

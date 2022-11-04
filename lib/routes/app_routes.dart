@@ -1,8 +1,12 @@
+import 'package:flutter_study_app/controllers/question_controller.dart';
 import 'package:flutter_study_app/controllers/question_paper/question_paper_controller.dart';
 import 'package:flutter_study_app/controllers/zoom_drawer_controller.dart';
 import 'package:flutter_study_app/screens/home/home_screen.dart';
+import 'package:flutter_study_app/screens/home/question_card.dart';
 import 'package:flutter_study_app/screens/introduction/introduction.dart';
 import 'package:flutter_study_app/screens/login/login_screen.dart';
+import 'package:flutter_study_app/screens/questions/question_screen.dart';
+import 'package:flutter_study_app/screens/questions/test_overview_screen.dart';
 import 'package:flutter_study_app/screens/splash/splash_screen.dart';
 import 'package:get/get.dart';
 
@@ -20,6 +24,16 @@ class AppRoutes {
         GetPage(
           name: LoginScreen.routeName,
           page: () => const LoginScreen(),
-        )
+        ),
+        GetPage(
+            name: QuestionScreen.routeName,
+            page: () => const QuestionScreen(),
+            binding: BindingsBuilder(() {
+              Get.put<QuestionsController>(QuestionsController());
+            })),
+        GetPage(
+          name: TestOverviewScreen.routeName,
+          page: () => const TestOverviewScreen(),
+        ),
       ];
 }

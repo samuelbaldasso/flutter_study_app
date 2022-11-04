@@ -23,7 +23,8 @@ class QuestionCard extends GetView<QuestionPaperController> {
           borderRadius: UIParameters.cardBorderRadius,
           color: Theme.of(context).cardColor),
       child: InkWell(
-        onTap: (() => controller.navigateToQuestions(paper: model)),
+        onTap: (() =>
+            controller.navigateToQuestions(paper: model, tryAgain: false)),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Stack(
