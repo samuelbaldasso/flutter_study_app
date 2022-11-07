@@ -5,7 +5,9 @@ import 'package:flutter_study_app/screens/home/home_screen.dart';
 import 'package:flutter_study_app/screens/home/question_card.dart';
 import 'package:flutter_study_app/screens/introduction/introduction.dart';
 import 'package:flutter_study_app/screens/login/login_screen.dart';
+import 'package:flutter_study_app/screens/questions/answer_check_screen.dart';
 import 'package:flutter_study_app/screens/questions/question_screen.dart';
+import 'package:flutter_study_app/screens/questions/result_screen.dart';
 import 'package:flutter_study_app/screens/questions/test_overview_screen.dart';
 import 'package:flutter_study_app/screens/splash/splash_screen.dart';
 import 'package:get/get.dart';
@@ -34,6 +36,14 @@ class AppRoutes {
         GetPage(
           name: TestOverviewScreen.routeName,
           page: () => const TestOverviewScreen(),
+        ),
+        GetPage(
+          name: ResultScreen.routeName,
+          page: () => const ResultScreen(),
+        ),
+        GetPage(
+          name: AnswerCheckScreen.routeName,
+          page: () => const AnswerCheckScreen(),
         ),
       ];
 }

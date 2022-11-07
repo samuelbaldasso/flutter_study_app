@@ -81,7 +81,9 @@ class TestOverviewScreen extends GetView<QuestionsController> {
                 child: Padding(
                     padding: UIParameters.mobileScreenPadding,
                     child: MainButton(
-                      onTap: () {},
+                      onTap: () {
+                        controller.completeQuestions();
+                      },
                       title: 'Complete',
                     ))),
           ],
