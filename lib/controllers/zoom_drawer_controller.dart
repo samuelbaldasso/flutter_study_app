@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class MyZoomDrawerController extends GetxController {
   final zoomDrawerController = ZoomDrawerController();
+  bool isLogged = true;
   Rxn<User?> user = Rxn();
   void toogleDrawer() {
     zoomDrawerController.toggle?.call();
@@ -21,9 +22,12 @@ class MyZoomDrawerController extends GetxController {
 
   void signOut() {
     Get.find<AuthController>().signOut();
+    isLogged = false;
   }
 
-  void signIn() {}
+  void signIn() {
+    Get.find<AuthController>().signInWithGoogle();
+  }
 
   void eMail() {
     final Uri emailLauncher =

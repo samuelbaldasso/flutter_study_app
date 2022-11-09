@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_study_app/firebase_ref/references.dart';
 import 'package:flutter_study_app/screens/login/login_screen.dart';
 import 'package:flutter_study_app/utils/app_logger.dart';
+import 'package:flutter_zoom_drawer/config.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
@@ -83,7 +84,6 @@ class AuthController extends GetxController {
   Future<void> signOut() async {
     AppLogger.d('Signed out...');
     try {
-      print('hi...');
       await _auth.signOut();
       navigateToHome();
     } on FirebaseAuthException catch (e) {
